@@ -109,7 +109,7 @@ function limpiar()
    document.getElementById("txtdni").value= " ";
 }
 
-function eliminar()
+function eliminar() // falta completar
 {
    var NumAsiento = document.getElementById('numAsiento').value;
    
