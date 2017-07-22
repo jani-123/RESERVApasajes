@@ -2,7 +2,7 @@ var celdas = document.getElementsByTagName('td');
 var asientos = []; // creo un array asiento vacio
 var colorCeldas;
 for (var i = 0; i < celdas.length; i++) {
-    celdas[i].addEventListener('click',redirect,false);  
+    celdas[i].addEventListener('click',redirect,false);
 }
 
 function redirect(event){
@@ -20,10 +20,10 @@ function redirect(event){
 
     var html2 = "";
     var b = '<button type="button" name="busca" onclick="reserva()" > ' + "reserva" + '</button>' + " " + " " +
-            '<button type="button" name="cancelar" onclick="eliminar()" > ' + "eliminar" + '</button>' + " " + " " + 
+            '<button type="button" name="cancelar" onclick="eliminar()" > ' + "eliminar" + '</button>' + " " + " " +
             '<button type="button" name="listar" onclick="listar()" > ' + "lista" + '</button>' + " <br>" + "<br>" ;
     html2 += b;
- 
+
     var num = parseInt ( e );
     for(var i=0 ; i < asientos.length ; i++)
     {
@@ -46,7 +46,7 @@ function Pasajero(NumAsiento,Nombre,Apellido,Dni) {
   this.nombre = Nombre,
   this.apellido = Apellido,
   this.dni = Dni
-}; 
+};
 
 function reserva()
 {
@@ -55,10 +55,10 @@ function reserva()
     var Apellido = document.getElementById("txtapellido").value;
     var Dni = document.getElementById("txtdni").value;
     var N = 32; // Número de asientos
-    var pasajes = new Pasajero(NumAsiento,Nombre,Apellido,Dni); 
+    var pasajes = new Pasajero(NumAsiento,Nombre,Apellido,Dni);
     asientos.push(pasajes);
     colorCeldas.style.backgroundColor ="red";
-    
+
 }
 
 
@@ -69,7 +69,7 @@ function listar()
     for(var i=0 ; i < asientos.length ; i++)
     {
         var datos = asientos[i];
-          
+
                str += "<strong>" + "Numero de Asiento: " + "</strong>"  + datos.numAsiento + "<br>" +
                        "<strong>" + "Nombre del pasajero: " + "</strong>"  + datos.nombre +"<br>" +
                        "<strong>" + "Apellido del pasajero: " + "</strong>" +  datos.apellido +"<br>" +
@@ -86,7 +86,7 @@ function buscar()
     for(var i=0 ; i < asientos.length ; i++)
     {
       var datos = asientos[i];
-          if ( parseInt(_dni) === parseInt(datos.dni) ) 
+          if ( parseInt(_dni) === parseInt(datos.dni) )
           {
                  str = '<table border="4">' +
                  "<tr>" + "<td>" + "<strong>" + "Numero de Asiento: " + "</strong>"  + "</td>" + "<td>" + datos.numAsiento + "</td>" + "</tr>" +
@@ -96,7 +96,7 @@ function buscar()
                  "</table>";
                  break;
           }
-          
+
      }
      document.getElementById("mostrarBusqueda").innerHTML = str;
 }
@@ -112,11 +112,11 @@ function limpiar()
 function eliminar() // falta completar
 {
    var NumAsiento = document.getElementById('numAsiento').value;
-   
+
     for(var i=0 ; i < asientos.length ; i++)
     {
         var datos = asientos[i];
-        if ( num === parseInt(datos.numAsiento) )  {
+        if ( numAsiento === datos.numAsiento)   {
           delete datos.numAsiento;
           delete datos.nombre;
           delete datos.apellido;
