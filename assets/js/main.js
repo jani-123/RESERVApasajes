@@ -1,11 +1,91 @@
-var celdas = document.getElementsByTagName('td');
+function Persona(numAsiento,nombre,apellido,dni)
+{
+   this.numAsiento = numAsiento;
+   this.nombre = nombre;
+   this.apellido = apellido;
+   this.dni = dni;
+
+   this.toHTML = function() {
+      var html = ""; 
+      html += this.numAsiento + "<br>";
+      html += this.nombre + "<br>";
+      html += this.apellido  + "<br>";
+      html += this.dni;
+      return html;
+   }
+}
+
+function Bus()
+{
+    this.asientos = [];
+    this.add = function (pasajero1 ) { // reserva
+         this.asientos.push(pasajero1);
+    }
+
+    this.buscar = function (_dni ) {
+        var str = "";
+        for(var i=0 ; i < this.asientos.length ; i++)
+        {
+          var datos = this.asientos[i];
+              if ( parseInt(this._dni) === parseInt(datos.dni) )
+              {
+                     str = '<table border="4">' +
+                     "<tr>" + "<td>" + "<strong>" + "Numero de Asiento: " + "</strong>"  + "</td>" + "<td>" + datos.numAsiento + "</td>" + "</tr>" +
+                     "<tr>" + "<td>" + "<strong>" + "Nombre del pasajero: " + "</strong>" + "</td>" + "<td>" + datos.nombre +"</td>" + "</tr>" +
+                     "<tr>" + "<td>" + "<strong>" + "Apellido del pasajero: " + "</strong>" + "</td>" + "<td>" + datos.apellido +"</td>" + "</tr>" +
+                     "<tr>" + "<td>" +  "<strong>" + "DNI del pasajero: " + "</strong>" + "</td>" + "<td>" + datos.dni +"</td>" + "</tr> " +
+                     "</table>";
+                     break;
+              }
+
+         }
+         document.getElementById("mostrarBusqueda").innerHTML = str;
+    }
+
+    this.listar = function ( ) {
+
+
+    }
+
+    this.limpiar = function ( ){
+
+    }
+
+}
+
+var pasajero1 = new Bus();
+
+var Reservar = document.getElementById('reserva');
+  var NumAsiento = document.getElementById('numAsiento').value;
+  var Nombre = document.getElementById("txtnombre").value;
+  var Apellido = document.getElementById("txtapellido").value;
+  var Dni = document.getElementById("txtdni").value;
+Reservar.onclick = function(){
+
+    pasajero1.add(new Persona(NumAsiento,Nombre,Apellido,Dni));
+    alert("si sale");
+}
+//
+
+var Buscar = document.getElementById('btnBusca');  // button
+var _dni = document.getElementById("buscar").value; 
+Buscar.onclick = function (){
+  pasajero1.buscar(_dni);
+}
+
+
+
+
+
+/*var celdas = document.getElementsByTagName('td');
 var asientos = []; // creo un array asiento vacio
 var colorCeldas;
 for (var i = 0; i < celdas.length; i++) {
     celdas[i].addEventListener('click',redirect,false);
 }
-
+ 
 function redirect(event){
+ 
   	var e = event.target.textContent;
     colorCeldas = event.target;
     var html1= "";
@@ -23,22 +103,23 @@ function redirect(event){
             '<button type="button" name="cancelar" onclick="eliminar()" > ' + "eliminar" + '</button>' + " " + " " +
             '<button type="button" name="listar" onclick="listar()" > ' + "lista" + '</button>' + " <br>" + "<br>" ;
     html2 += b;
-
+    
     var num = parseInt ( e );
     for(var i=0 ; i < asientos.length ; i++)
     {
         var datos = asientos[i];
-        if ( num === parseInt(datos.numAsiento) )  {
+        if ( num === parseInt(datos.numAsiento && num != NaN) )  {
           document.getElementById('numAsiento').value = datos.numAsiento;
           document.getElementById("txtnombre").value = datos.nombre;
           document.getElementById("txtapellido").value = datos.apellido;
           document.getElementById("txtdni").value = datos.dni;
 
         }
-    }
 
+    }
     document.getElementById("muestra1").innerHTML=html1;
     document.getElementById("muestra2").innerHTML=html2;
+
 }
 
 function Pasajero(NumAsiento,Nombre,Apellido,Dni) {
@@ -50,6 +131,7 @@ function Pasajero(NumAsiento,Nombre,Apellido,Dni) {
 
 function reserva()
 {
+ 
     var NumAsiento = document.getElementById('numAsiento').value;
     var Nombre = document.getElementById("txtnombre").value;
     var Apellido = document.getElementById("txtapellido").value;
@@ -59,6 +141,7 @@ function reserva()
     asientos.push(pasajes);
     colorCeldas.style.backgroundColor ="red";
 
+       limpiar()
 }
 
 
@@ -124,4 +207,4 @@ function eliminar() // falta completar
 
         }
     }
-}
+}*/

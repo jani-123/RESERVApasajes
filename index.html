@@ -20,7 +20,7 @@
 	     		<td>16</td>
 	     		<td>20</td>
 	     		<td>24</td>
-	     		<td>28</td>
+	     		<td>28</td> 
 	     		<td>32</td>
 	       	</tr>
 	     	<tr>
@@ -54,8 +54,35 @@
 	     		<td>29</td>
 	     	</tr>
      </table><br>
-     <div id="muestra1"></div>
-     <div id="muestra2"></div>
+     <div id="muestra1">
+     	<table border="2" bordercolor="blue">
+        <tr>
+            <td><strong>Reserve su pasaje</strong></td>
+        </tr>
+        <tr>
+            <td>Nº de Asiento : </td>
+            <td><input type='text' id='numAsiento'  disabled ></input></td>
+        </tr>
+        <tr>
+            <td>Nombre :</td>
+            <td><input id=txtnombre type=text ></input></td>
+        </tr>
+        <tr>
+            <td>Apellido: </td>
+            <td><input id=txtapellido type=text ></input></td>
+        </tr>
+        <tr>
+            <td>D.N.I: </td>
+            <td><input id=txtdni type=text ></input></td>
+        </tr>
+        </table>
+     </div><br>
+     <div id="muestra2">
+     	<button id="reserva" >RESERVA</button>
+     	<button id="listar" >LISTAR</button>
+     	<button id="cancelar" >CANCELAR</button><br><br>
+
+     </div><br>
      
      
   </div>
@@ -64,7 +91,7 @@
       <div>
 	      	<label>D.N.I</label>
 	  	  	<input type="number" name="dni" id="buscar">
-	  	  	<button type="button" name="busca" onclick="buscar()">BUSCAR</button><br><br>
+	  	  	<button type="button" id="btnBusca">BUSCAR</button><br><br>
 					<div id="mostrarBusqueda" style="font-size:100%"></div>
       </div>
   </div>
